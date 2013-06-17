@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Tag Sort</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+		$(function() {
+			<!-- pull json from endpoints -->
+			$.ajax('/tags/').done(function (data) {
+				var jsonified = JSON.parse(data)
+				console.log('got some data! ', jsonified);
+				for (var i=0; i < jsonified.length; ++i) {
+					var tag_ready = $("<li></li>").text(jsonified[i])
+					$("#sortable").append(tag_ready)
+				}
+				$( "#sortable" ).sortable();
+			});
+
+			<!-- for each tag, render each tag as a draggable/sortable item in a list-->
+  	})
+		</script>
+		
+		<h3>Get ma' tags ON.</h3>
+		<ol id="sortable">
+		</ol>
+	</body>
+</html>
+
+Justin:  API for resort
+ Justin:  send a POST to /resort/
+parameters are:   tag, before, and after
+they're all strings of the tags.
